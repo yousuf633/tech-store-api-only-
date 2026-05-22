@@ -30,7 +30,7 @@ class ProductController extends Controller
                 return response()->json(
                     [
                         'message'=>'success',
-                        'data'=>$query->get()
+                        'data'=>$query->paginate(10)
                     ]
                 );
     }
