@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 class Favorite extends Model
 {
     use HasUuids;
+    protected $table = 'favorite';
 
     public $incrementing = false;
 
