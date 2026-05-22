@@ -48,12 +48,20 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated());
+        $data = $request->validated();
+        if($request->hasFile('image'))
+            {
+                $path=$request->file('image')->store('product','public');
+                $data['image'] = $path;
+            }
+
+  
+    $product = Product::create($data);
 
     return response()->json([
-        'message' => 'created',
+        'message' => 'success',
         'data' => $product
-    ], 201);
+    ]);
     }
 
     /**
