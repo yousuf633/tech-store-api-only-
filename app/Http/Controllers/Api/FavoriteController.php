@@ -23,7 +23,7 @@ class FavoriteController extends Controller
 
     public function store(StoreFavoriteRequest $request)
     {
-        $favorite = Favorite::create([
+        $favorite = Favorite::firstOrCreate([
             'user_id' => $request->user()->id,
             'product_id' => $request->product_id
         ]);
